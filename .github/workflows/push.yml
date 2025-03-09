@@ -21,18 +21,18 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
     - name: Check out repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v4
       with:
         python-version: 3.8
     
     - name: Install sqlite3
       run: sudo apt-get install sqlite3
     
-    - uses: actions/cache@v1
-      name: Configure pip caching
+    - name: Configure pip caching
+      uses: actions/cache@v3
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
